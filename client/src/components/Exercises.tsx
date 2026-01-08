@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { CheckSquare, Edit3, BookOpen, Sparkles, Copy } from 'lucide-react';
+import { CheckSquare, Edit3, BookOpen, Sparkles, Download, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import jsPDF from 'jspdf';
 
 const Exercises = () => {
   // Estado para armazenar as respostas
@@ -82,6 +83,63 @@ ${allText}
     toast.success("Prompt copiado! Cole no ChatGPT ou na aba Ferramentas.");
   };
 
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 20;
+    const contentWidth = pageWidth - (margin * 2);
+    let yPosition = 20;
+
+    // Título
+    doc.setFontSize(22);
+    doc.setTextColor(0, 51, 102); // Azul escuro
+    doc.text("Meu Plano de Negócios", pageWidth / 2, yPosition, { align: 'center' });
+    yPosition += 15;
+
+    doc.setFontSize(12);
+    doc.setTextColor(100);
+    doc.text("Gerado a partir do método 'Do Zero ao Primeiro Negócio'", pageWidth / 2, yPosition, { align: 'center' });
+    yPosition += 20;
+
+    // Conteúdo
+    doc.setFontSize(12);
+    doc.setTextColor(0);
+
+    exercises.forEach((exercise) => {
+      const answer = answers[exercise.id];
+      if (answer && answer.trim() !== "") {
+        // Verificar se precisa de nova página
+        if (yPosition > 270) {
+          doc.addPage();
+          yPosition = 20;
+        }
+
+        // Título do Exercício
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(0, 51, 102);
+        const titleLines = doc.splitTextToSize(`${exercise.id}. ${exercise.title}`, contentWidth);
+        doc.text(titleLines, margin, yPosition);
+        yPosition += (titleLines.length * 5) + 2;
+
+        // Resposta
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.setTextColor(50);
+        const answerLines = doc.splitTextToSize(answer, contentWidth);
+        doc.text(answerLines, margin, yPosition);
+        yPosition += (answerLines.length * 5) + 10;
+      }
+    });
+
+    if (yPosition === 55) { // Nenhuma resposta adicionada
+      doc.text("Nenhuma resposta encontrada. Preencha os exercícios para gerar seu plano.", margin, yPosition);
+    }
+
+    doc.save("meu-plano-de-negocios.pdf");
+    toast.success("PDF baixado com sucesso!");
+  };
+
   return (
     <div className="max-w-4xl mx-auto space-y-12 pb-20">
       <div className="text-center">
@@ -99,6 +157,20 @@ ${allText}
           Tirar sua ideia da cabeça e validá-la no papel. Ao final, você terá clareza total sobre o que vai vender, 
           para quem vai vender e como vai lucrar, sem achismos.
         </p>
+      </div>
+
+      {/* Botão de Download do Plano no Topo */}
+      <div className="flex justify-center">
+        <Button 
+          onClick={generatePDF}
+          className="bg-green-600 hover:bg-green-700 text-white shadow-md px-8 py-6 rounded-xl flex items-center gap-3"
+        >
+          <FileText className="h-6 w-6" />
+          <div className="text-left">
+            <span className="block font-bold text-lg">Baixar Meu Plano de Negócios</span>
+            <span className="block text-xs opacity-90">Gerar PDF com minhas respostas</span>
+          </div>
+        </Button>
       </div>
 
       <div className="space-y-12">
@@ -146,8 +218,16 @@ ${allText}
         ))}
       </div>
 
-      {/* Botão Mágico de IA */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* Botões Flutuantes */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <Button 
+          onClick={generatePDF}
+          className="bg-white text-gray-800 border border-gray-200 shadow-lg px-6 py-4 rounded-full flex items-center gap-3 hover:bg-gray-50"
+        >
+          <Download className="h-5 w-5" />
+          <span className="font-semibold">Baixar PDF</span>
+        </Button>
+
         <Button 
           onClick={generateProfilePrompt}
           className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg px-6 py-6 rounded-full flex items-center gap-3 animate-bounce"

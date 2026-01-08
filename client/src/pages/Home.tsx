@@ -25,11 +25,7 @@ const Home = () => {
                 Começar Agora <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href="/ebook-do-zero-ao-negocio.pdf" download className="flex items-center">
-                Baixar E-book (PDF)
-              </a>
-            </Button>
+
           </div>
         </div>
       </section>
