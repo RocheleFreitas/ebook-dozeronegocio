@@ -26,9 +26,9 @@ const Home = () => {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/downloads">
-                Baixar E-book
-              </Link>
+              <a href="/ebook-do-zero-ao-negocio.pdf" download className="flex items-center">
+                Baixar E-book (PDF)
+              </a>
             </Button>
           </div>
         </div>
@@ -37,6 +37,15 @@ const Home = () => {
       {/* Features */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
+          {/* Bloco de Objetivo */}
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-12 text-center max-w-3xl mx-auto">
+            <h3 className="text-lg font-bold text-blue-900 mb-2">🎯 Objetivo do Método</h3>
+            <p className="text-blue-800">
+              Tirar sua ideia da cabeça e validá-la no papel. Ao final, você terá clareza total sobre o que vai vender, 
+              para quem vai vender e como vai lucrar, sem achismos.
+            </p>
+          </div>
+
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
             O que você vai encontrar
           </h2>
@@ -53,8 +62,8 @@ const Home = () => {
             </div>
             <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
               <Users className="h-12 w-12 text-green-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">14 Ferramentas</h3>
-              <p className="text-gray-600">Recursos essenciais para gestão</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Assistente de IA</h3>
+              <p className="text-gray-600">Consultoria personalizada para seu negócio</p>
             </div>
             <div className="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
               <TrendingUp className="h-12 w-12 text-purple-500 mx-auto mb-4" />
