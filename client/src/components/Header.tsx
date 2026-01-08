@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Menu, X, BookOpen } from 'lucide-react';
+import { Menu, X, BookOpen, LogOut, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [location] = useLocation();
+  const { user, logout } = useAuth();
 
   const navigation = [
     { name: 'Início', href: '/' },
@@ -48,6 +58,30 @@ const Header = () => {
                 </Button>
               </Link>
             ))}
+
+            {/* User Profile Dropdown */}
+            {user && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="ml-4 border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100">
+                    <User className="w-4 h-4 mr-2" />
+                    Olá, {user.name.split(' ')[0]}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="text-xs text-gray-500">
+                    Cadastrado em: {new Date(user.registrationDate).toLocaleDateString()}
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={logout} className="text-red-600 cursor-pointer">
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sair do E-book
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -71,6 +105,11 @@ const Header = () => {
       {isOpen && (
         <div className="md:hidden bg-white border-t">
           <div className="px-2 pt-2 pb-3 space-y-1">
+            {user && (
+              <div className="px-3 py-2 text-sm text-blue-700 font-medium bg-blue-50 rounded-md mb-2">
+                Olá, {user.name}
+              </div>
+            )}
             {navigation.map((item) => (
               <Link key={item.name} href={item.href}>
                 <div
@@ -85,6 +124,17 @@ const Header = () => {
                 </div>
               </Link>
             ))}
+            {user && (
+              <div
+                className="block px-3 py-2 rounded-md text-base font-medium text-red-600 hover:bg-red-50 cursor-pointer mt-2 border-t"
+                onClick={() => {
+                  logout();
+                  setIsOpen(false);
+                }}
+              >
+                Sair do E-book
+              </div>
+            )}
           </div>
         </div>
       )}

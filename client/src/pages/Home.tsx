@@ -16,7 +16,7 @@ const Home = () => {
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Guia motivacional e prático para criar algo próprio sem largar o CLT. 
+            Guia prático para criar algo próprio sem largar o CLT. 
             Aprenda o método testado para empreender com segurança.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
