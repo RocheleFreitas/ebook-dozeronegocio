@@ -93,6 +93,15 @@ const Login = () => {
           </form>
         </CardContent>
       </Card>
+
+      {/* Botão de Compra */}
+      <div className="absolute bottom-8 left-4 right-4 flex justify-center">
+        <Button asChild variant="outline" className="border-2 border-orange-500 text-orange-600 hover:bg-orange-50 font-semibold">
+          <a href="https://hotmart.com/pt-br/marketplace/produtos/do-zero-ao-primeiro-negocio-guia-interativo-completo/J103802733R" target="_blank" rel="noopener noreferrer">
+            Comprar Agora
+          </a>
+        </Button>
+      </div>
     </div>
   );
 };
