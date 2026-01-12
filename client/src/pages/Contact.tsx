@@ -93,6 +93,26 @@ const Contact = () => {
         </div>
       </div>
 
+      {/* FAQ */}
+      <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
+        <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
+          Perguntas Frequentes
+        </h3>
+        <div className="space-y-4">
+          <div className="border-b pb-4">
+            <h4 className="font-semibold text-gray-900 mb-2">O e-book é 100% online?</h4>
+            <p className="text-gray-600">Sim! Você pode acessar de qualquer dispositivo com internet.</p>
+          </div>
+          <div className="border-b pb-4">
+            <h4 className="font-semibold text-gray-900 mb-2">Posso baixar o conteúdo?</h4>
+            <p className="text-gray-600">Sim, você pode baixar a versão em PDF na área de Downloads.</p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-gray-900 mb-2">Por quanto tempo tenho acesso?</h4>
+            <p className="text-gray-600">O acesso é vitalício! Você pode consultar sempre que precisar.</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

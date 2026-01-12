@@ -4,9 +4,7 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
 import ScrollToTop from "./components/ScrollToTop";
 import Contact from "./pages/Contact";
 import Header from "./components/Header";
@@ -16,18 +14,7 @@ import Exercises from "./components/Exercises";
 import Tools from "./components/Tools";
 import Downloads from "./components/Downloads";
 
-function ProtectedRoute({ component: Component }: { component: React.ComponentType }) {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <Component /> : <Login />;
-}
-
 function Router() {
-  const { isAuthenticated } = useAuth();
-
-  if (!isAuthenticated) {
-    return <Login />;
-  }
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -52,11 +39,9 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
-          <AuthProvider>
-            <Toaster />
-            <ScrollToTop />
-            <Router />
-          </AuthProvider>
+          <Toaster />
+          <ScrollToTop />
+          <Router />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
