@@ -109,7 +109,7 @@ const Contact = () => {
           </div>
           <div>
             <h4 className="font-semibold text-gray-900 mb-2">Por quanto tempo tenho acesso?</h4>
-            <p className="text-gray-600">O acesso é vitalício! Você pode consultar sempre que precisar.</p>
+            <p className="text-gray-600">O acesso é válido por 12 meses a partir da data da compra.</p>
           </div>
         </div>
       </div>

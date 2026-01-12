@@ -7,25 +7,61 @@ const Home = () => {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="text-center py-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Do Zero ao Primeiro
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">
-              {' '}Negócio
-            </span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Guia prático para criar algo próprio sem largar o CLT. 
-            Aprenda o método testado para empreender com segurança.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800">
-              <Link href="/dashboard">
-                Começar Agora <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-
+      <section className="py-12 md:py-20 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="text-center md:text-left space-y-8">
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                Do Zero ao Primeiro
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">
+                  Negócio
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 max-w-lg mx-auto md:mx-0">
+                Transforme sua ideia em um negócio real com nosso método interativo. 
+                Planejamento, IA e prática em um só lugar.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <Button asChild size="lg" className="bg-gradient-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 text-white shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                  <Link href="/dashboard">
+                    Começar Agora <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
+              <div className="flex items-center justify-center md:justify-start gap-4 text-sm text-gray-500">
+                <div className="flex items-center gap-1">
+                  <Users className="h-4 w-4 text-blue-600" />
+                  <span>+1000 Alunos</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Target className="h-4 w-4 text-orange-500" />
+                  <span>Método Validado</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="relative mx-auto w-full max-w-md perspective-1000">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-orange-500 rounded-xl blur-xl opacity-30 animate-pulse"></div>
+              <div className="relative transform transition-transform duration-500 hover:scale-105 hover:rotate-y-6">
+                <img 
+                  src="/images/cover-vertical-standard.jpg" 
+                  alt="Capa do E-book Do Zero ao Primeiro Negócio" 
+                  className="rounded-xl shadow-2xl w-full border border-white/20"
+                />
+                {/* Floating Badge */}
+                <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl border border-gray-100 hidden md:block animate-bounce-slow">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-green-100 p-2 rounded-full">
+                      <TrendingUp className="h-6 w-6 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-semibold uppercase">Atualizado</p>
+                      <p className="text-sm font-bold text-gray-900">Versão 2026 com IA</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
