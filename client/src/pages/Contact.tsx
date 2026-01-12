@@ -50,7 +50,7 @@ const Contact = () => {
               <Instagram className="h-6 w-6 text-pink-600" />
               <div className="text-left">
                 <div className="font-semibold">Instagram</div>
-                <div className="text-sm text-gray-600">@rochelefreitas</div>
+                <div className="text-sm text-gray-600">@rochelesfreitas</div>
               </div>
             </a>
           </Button>
