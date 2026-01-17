@@ -30,6 +30,24 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-12">
       <div className="w-full max-w-md space-y-6">
+        {/* Botão de Compra - Destaque Principal (Topo) */}
+        <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 rounded-xl p-6 shadow-2xl border-2 border-orange-400">
+          <div className="text-center space-y-3">
+            <p className="text-white font-semibold text-sm">
+              Ainda não tem acesso?
+            </p>
+            <Button asChild className="w-full h-14 text-xl font-bold bg-white text-orange-600 hover:bg-orange-50 shadow-lg hover:shadow-xl transition-all duration-200">
+              <a href="https://hotmart.com/pt-br/marketplace/produtos/do-zero-ao-primeiro-negocio-guia-interativo-completo/J103802733R" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                <ShoppingCart className="w-6 h-6" />
+                Comprar Agora
+              </a>
+            </Button>
+            <p className="text-white text-xs font-medium">
+              Acesso imediato ao e-book completo
+            </p>
+          </div>
+        </div>
+
         {/* Card de Login */}
         <Card className="shadow-xl">
           <CardHeader className="text-center space-y-4 pb-2">
@@ -96,23 +114,7 @@ const Login = () => {
           </CardContent>
         </Card>
 
-        {/* Botão de Compra - Destaque Principal */}
-        <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-700 rounded-xl p-6 shadow-2xl border-2 border-orange-400">
-          <div className="text-center space-y-3">
-            <p className="text-white font-semibold text-sm">
-              Ainda não tem acesso?
-            </p>
-            <Button asChild className="w-full h-14 text-xl font-bold bg-white text-orange-600 hover:bg-orange-50 shadow-lg hover:shadow-xl transition-all duration-200">
-              <a href="https://hotmart.com/pt-br/marketplace/produtos/do-zero-ao-primeiro-negocio-guia-interativo-completo/J103802733R" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                <ShoppingCart className="w-6 h-6" />
-                Comprar Agora
-              </a>
-            </Button>
-            <p className="text-white text-xs font-medium">
-              Acesso imediato ao e-book completo
-            </p>
-          </div>
-        </div>
+
       </div>
     </div>
   );
